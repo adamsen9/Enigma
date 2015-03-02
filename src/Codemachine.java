@@ -8,21 +8,22 @@ public class Codemachine {
 		//Rotor settings
 		RotorBoard rotorBoard = new RotorBoard();
 		Plugboard plugboard = new Plugboard();
-		
-		String input = "GRZHCTGZNGRZHCTGZNGRZHCTGZNGRZHCTGZN";
 		//String manipulation
+
+		System.out.println(code("QOSOLPTABQHXQGMOEPXHNEFXOYBZXSNKEXPFJGRMNPNNKE",plugboard,rotorBoard));
 		
+	}	
+	
+	public static String code(String input, Plugboard plugboard, RotorBoard rotorBoard){
 		input = input.replaceAll("\\s","");
 		input = input.toUpperCase();
 		
 		char[] charArray = input.toCharArray();
-		
-		
-		String str = "";
+		String output = "";
 		for(int i = 0; i < charArray.length; i++) {
-			str += plugboard.swap(rotorBoard.keypress(plugboard.swap(charArray[i])));
+			output += plugboard.swap(rotorBoard.keypress(plugboard.swap(charArray[i])));
 		}
-		System.out.println(str);
-		System.out.println(rotorBoard.getRotorState());
-	}	
+
+		return output;
+	}
 }
